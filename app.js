@@ -1,12 +1,14 @@
 /* Imports */
 import { renderGoblin } from './render-utils.js';
-import { getRandomItem } from './utils.js';
+// import { getRandomItem } from './utils.js';
 
 /* Get DOM Elements */
 const messageSection = document.getElementById('message-section');
 const scoreboardSection = document.getElementById('scoreboard-section');
 const goblinList = document.getElementById('goblin-list');
-// const userHPDisplay = document.getElementById('user-hp');
+//const userDisplay = document.getElementById('user-section');
+const userImage = document.getElementById('user-image');
+const userHPDisplay = document.getElementById('user-hp');
 
 /* State */
 let message = '(message to user will go here)';
@@ -16,6 +18,10 @@ let goblins = [
     { name: 'Birdy', type: 'ogre', hp: 0 },
     { name: 'Sal', type: 'ghoul', hp: 5 },
 ];
+let user = {
+    type: 'hero',
+    hp: 10,
+};
 // let userHP = 10;
 
 /* Probability array */
@@ -31,6 +37,13 @@ function displayMessage() {
 
 function displayScoreboard() {
     scoreboardSection.textContent = scoreboard;
+}
+
+function displayUser() {
+    if (user.hp === 0) {
+        userImage.src = 'assets/deaduser.png';
+    }
+    userHPDisplay.textContent = user.hp;
 }
 
 function displayGoblins() {
@@ -50,12 +63,12 @@ function displayGoblins() {
                 displayMessage();
                 return;
             }
-            // 2. goblin is damaged,
-
-            // update hp
+            // 2. goblin and/or player damaged
+            // update goblin hp
+            // update player hp
             // update message
-            //message = 'tbd';
-            // }
+            // update scoreboard
+
             console.log('goblin el clicked');
         });
     }
@@ -65,3 +78,4 @@ function displayGoblins() {
 displayMessage();
 displayScoreboard();
 displayGoblins();
+displayUser();
