@@ -1,39 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>Goblin Fighter</title>
+        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>Web App</title>
-    <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+        <!-- js -->
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <!-- see https://fonts.google.com/ -->
 
-    <!-- fonts -->
-    <!-- see https://fonts.google.com/ -->
+        <!-- css -->
+        <link rel="stylesheet" href="styles/reset.css" />
+        <link rel="stylesheet" href="styles/global.css" />
+        <!-- add link for page specific css -->
+    </head>
 
-    <!-- css -->
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <!-- add link for page specific css -->
+    <body>
+        <header>
+            <img class="logo" src="assets/hero.png" alt="hero" />
+            <h1>Goblin Fighter</h1>
+        </header>
 
-</head>
-
-<body>
-    <header>
-        <img class="logo" src="assets/html_css_js.png" alt="logo">
-        <h1>Web App</h1>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+        <main>
+            <section id="scoreboard">Scoreboard message: you have defeated 4 goblin(s).</section>
+            <section id="message">
+                You hit Bonzo and did 4 in damage. Bumpy hit you and did 1 in damage.
+            </section>
+            <div>
+                <section id="user-section">
+                    <img src="assets/hero.png" alt="hero" />
+                    <p>Hit points: 4</p>
+                </section>
+                <section id="goblin-section">
+                    <form id="add-goblin-form">
+                        <input name="name" required />
+                        <button>Add</button>
+                    </form>
+                    <ul id="goblin-list">
+                        <li>
+                            <span>Bumpy</span>
+                            <img src="assets/goblin.png" alt="goblin" />
+                            <span>8</span>
+                        </li>
+                        <li>
+                            <span>Glop</span>
+                            <img src="assets/ogre.png" alt="ogre" />
+                            <span>3</span>
+                        </li>
+                        <li>
+                            <span>Bumpy</span>
+                            <img src="assets/ghoul.png" alt="ghoul" />
+                            <span>1</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <a href="<a href="https://www.flaticon.com/free-icons/dead" title="dead icons"
+                >Dead icons created by Freepik - Flaticon</a
+            >
+        </footer>
+    </body>
 </html>
