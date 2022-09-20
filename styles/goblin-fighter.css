@@ -12,11 +12,11 @@ main {
     font-size: 1.3em;
 }
 
-#scoreboard {
+#scoreboard-section {
     background-color: rgb(128, 196, 210);
 }
 
-#message {
+#message-section {
     background-color: rgb(217, 216, 121);
 }
 
