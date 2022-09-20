@@ -1,5 +1,9 @@
+header {
+    background-color: rgb(151, 180, 109);
+}
+
 main {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(74, 86, 77);
 }
 .banner {
     display: grid;
@@ -9,11 +13,11 @@ main {
 }
 
 #scoreboard {
-    background-color: rgb(109, 182, 197);
+    background-color: rgb(128, 196, 210);
 }
 
 #message {
-    background-color: rgb(153, 211, 187);
+    background-color: rgb(217, 216, 121);
 }
 
 .play-area {
