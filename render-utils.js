@@ -12,6 +12,7 @@ export function renderGoblin(goblin) {
     }
 
     const goblinHP = document.createElement('span');
+    // to do: get random number for initial hp
     goblinHP.textContent = goblin.hp;
 
     li.append(name, goblinImage, goblinHP);
