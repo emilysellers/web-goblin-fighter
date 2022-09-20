@@ -1,12 +1,11 @@
 /* Imports */
 import { renderGoblin } from './render-utils.js';
-// import { getRandomItem } from './utils.js';
+import { getRandomItem } from './utils.js';
 
 /* Get DOM Elements */
 const messageSection = document.getElementById('message-section');
 const scoreboardSection = document.getElementById('scoreboard-section');
 const goblinList = document.getElementById('goblin-list');
-//const userDisplay = document.getElementById('user-section');
 const userImage = document.getElementById('user-image');
 const userHPDisplay = document.getElementById('user-hp');
 
@@ -14,19 +13,18 @@ const userHPDisplay = document.getElementById('user-hp');
 let message = '(message to user will go here)';
 let scoreboard = 'You have defeated 0 goblin(s).';
 let goblins = [
-    { name: 'Bronco', type: 'goblin', hp: 9 },
-    { name: 'Birdy', type: 'ogre', hp: 0 },
+    { name: 'Bronco', type: 'goblin', hp: 8 },
     { name: 'Sal', type: 'ghoul', hp: 5 },
+    { name: 'Birdy', type: 'ogre', hp: 10 },
 ];
 let user = {
     type: 'hero',
     hp: 10,
 };
-// let userHP = 10;
 
 /* Probability array */
-//const goblinAttackDamage = [0, 1, 1, 2, 2, 2, 3];
-//const userAttackDamage = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
+const goblinAttacks = [0, 1, 1, 2, 2, 2, 3];
+const userAttacks = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
 
 /* Events */
 
@@ -64,17 +62,24 @@ function displayGoblins() {
                 return;
             }
             // 2. goblin and/or player damaged
+            const userAttackDamage = getRandomItem(userAttacks);
+            const goblinAttackDamage = getRandomItem(goblinAttacks);
             // update goblin hp
-            // update player hp
+            goblin.hp = goblin.hp - userAttackDamage;
+            // update user hp
+            user.hp = user.hp - goblinAttackDamage;
             // update message
+            message = `${goblin.name} hit you and did ${goblinAttackDamage} in damage. You hit ${goblin.name} and did ${userAttackDamage} in damage.`;
             // update scoreboard
-
-            console.log('goblin el clicked');
+            // update displays
+            displayUser();
+            displayGoblins();
+            displayMessage();
         });
     }
 }
 
-// (don't forget to call any display functions you want to run on page load!)
+// Call display functions to run on page load
 displayMessage();
 displayScoreboard();
 displayGoblins();
