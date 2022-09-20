@@ -8,6 +8,7 @@ const scoreboardSection = document.getElementById('scoreboard-section');
 const goblinList = document.getElementById('goblin-list');
 const userImage = document.getElementById('user-image');
 const userHPDisplay = document.getElementById('user-hp');
+const addGoblinForm = document.getElementById('add-goblin-form');
 
 /* State */
 let message = '(message to user will go here)';
@@ -25,8 +26,23 @@ let user = {
 /* Probability array */
 const goblinAttacks = [0, 1, 1, 2, 2, 2, 3];
 const userAttacks = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
+const goblinTypes = ['goblin', 'goblin', 'ghoul', 'ghoul', 'ghoul', 'ogre'];
 
 /* Events */
+// add a goblin
+addGoblinForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(addGoblinForm);
+    const goblinType = getRandomItem(goblinTypes);
+    const goblin = {
+        name: formData.get('name'),
+        type: goblinType,
+        hp: 22,
+    };
+    goblins.push(goblin);
+    displayGoblins();
+});
+// remove dead goblins
 
 /* Display Functions */
 function displayMessage() {
