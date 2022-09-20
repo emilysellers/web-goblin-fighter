@@ -19,6 +19,7 @@
         <!-- css -->
         <link rel="stylesheet" href="styles/reset.css" />
         <link rel="stylesheet" href="styles/global.css" />
+        <link rel="stylesheet" href="styles/goblin-fighter.css" />
         <!-- add link for page specific css -->
     </head>
 
@@ -29,37 +30,44 @@
         </header>
 
         <main>
-            <section id="scoreboard">Scoreboard message: you have defeated 4 goblin(s).</section>
-            <section id="message">
+            <section class="banner" id="scoreboard">
+                Scoreboard message: you have defeated 4 goblin(s).
+            </section>
+
+            <section class="banner" id="message">
                 You hit Bonzo and did 4 in damage. Bumpy hit you and did 1 in damage.
             </section>
-            <div>
-                <section id="user-section">
-                    <img src="assets/hero.png" alt="hero" />
-                    <p>Hit points: 4</p>
-                </section>
+
+            <div class="play-area">
+                <div>
+                    <section id="user-section">
+                        <img src="assets/hero.png" alt="hero" />
+                        <p>4</p>
+                    </section>
+                </div>
                 <section id="goblin-section">
                     <form id="add-goblin-form">
                         <input name="name" required />
-                        <button>Add</button>
+                        <button>add goblin</button>
                     </form>
                     <ul id="goblin-list">
-                        <li>
-                            <span>Bumpy</span>
-                            <img src="assets/goblin.png" alt="goblin" />
-                            <span>8</span>
-                        </li>
-                        <li>
+                        <li class="goblin-card">
                             <span>Glop</span>
                             <img src="assets/ogre.png" alt="ogre" />
                             <span>3</span>
                         </li>
-                        <li>
-                            <span>Bumpy</span>
+                        <li class="goblin-card">
+                            <span>Daisy</span>
                             <img src="assets/ghoul.png" alt="ghoul" />
                             <span>1</span>
                         </li>
+                        <li class="goblin-card">
+                            <span>Bumpy</span>
+                            <img src="assets/goblin.png" alt="goblin" />
+                            <span>8</span>
+                        </li>
                     </ul>
+                    <button id="clear-goblins-button">remove dead goblins</button>
                 </section>
             </div>
         </main>
