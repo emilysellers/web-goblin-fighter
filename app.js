@@ -23,11 +23,23 @@ let user = {
     hp: 10,
 };
 let defeated = 0;
-
+/* Goblin types */
+const gob = {
+    type: 'goblin',
+    hp: 9,
+};
+const ghoul = {
+    type: 'ghoul',
+    hp: 12,
+};
+const ogre = {
+    type: 'ogre',
+    hp: 5,
+};
 /* Probability array */
 const goblinAttacks = [0, 1, 1, 2, 2, 2, 3];
 const userAttacks = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
-const goblinTypes = ['goblin', 'goblin', 'ghoul', 'ghoul', 'ghoul', 'ogre'];
+const goblinTypes = [gob, gob, ghoul, ghoul, ghoul, ogre];
 
 /* Events */
 // add a goblin
@@ -37,8 +49,8 @@ addGoblinForm.addEventListener('submit', (e) => {
     const goblinType = getRandomItem(goblinTypes);
     const goblin = {
         name: formData.get('name'),
-        type: goblinType,
-        hp: 10,
+        type: goblinType.type,
+        hp: goblinType.hp,
     };
     goblins.push(goblin);
 
