@@ -9,6 +9,7 @@ const goblinList = document.getElementById('goblin-list');
 const userImage = document.getElementById('user-image');
 const userHPDisplay = document.getElementById('user-hp');
 const addGoblinForm = document.getElementById('add-goblin-form');
+const removeDeadButton = document.getElementById('clear-goblins-button');
 
 /* State */
 let message = 'Time to fight some goblins!';
@@ -46,6 +47,17 @@ addGoblinForm.addEventListener('submit', (e) => {
     displayMessage();
 });
 // remove dead goblins
+removeDeadButton.addEventListener('click', () => {
+    const alive = [];
+
+    for (const goblin of goblins) {
+        if (goblin.hp > 0) {
+            alive.push(goblin);
+        }
+        goblins = alive;
+        displayGoblins();
+    }
+});
 
 /* Display Functions */
 function displayMessage() {
@@ -53,7 +65,7 @@ function displayMessage() {
 }
 
 function displayScoreboard() {
-    scoreboardSection.textContent = `You have defeated ${defeated} goblins.`;
+    scoreboardSection.textContent = `You have defeated ${defeated} goblin(s).`;
 }
 
 function displayUser() {
@@ -71,24 +83,16 @@ function displayGoblins() {
         const goblinEl = renderGoblin(goblin);
         goblinList.append(goblinEl);
 
-        //event listener
         goblinEl.addEventListener('click', () => {
-            // possible outcomes:
-            // 1. goblin is dead,
             if (goblin.hp === 0) {
-                //update message
                 message = 'This goblin is already dead.';
                 displayMessage();
                 return;
             }
-            // 2. goblin and/or player damaged
             const userAttackDamage = getRandomItem(userAttacks);
             const goblinAttackDamage = getRandomItem(goblinAttacks);
-            // update goblin hp
             goblin.hp = Math.max(0, goblin.hp - userAttackDamage);
-            // update user hp
             user.hp = Math.max(0, user.hp - goblinAttackDamage);
-            // update message
 
             message = '';
             if (userAttackDamage === 0) {
@@ -102,9 +106,7 @@ function displayGoblins() {
             } else {
                 message += `${goblin.name} hit you and did ${goblinAttackDamage} in damage. `;
             }
-            // update scoreboard
 
-            // update displays
             if (goblin.hp < 1) {
                 defeated++;
                 displayScoreboard();
