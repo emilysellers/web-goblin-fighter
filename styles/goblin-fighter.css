@@ -1,0 +1,72 @@
+header {
+    background-color: rgb(151, 180, 109);
+}
+
+main {
+    background-color: rgb(74, 86, 77);
+}
+.banner {
+    display: grid;
+    place-content: center;
+    height: 50px;
+    font-size: 1.3em;
+}
+
+#scoreboard-section {
+    background-color: rgb(128, 196, 210);
+}
+
+#message-section {
+    background-color: rgb(217, 216, 121);
+}
+
+.play-area {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 40px;
+}
+
+#user-section img {
+    width: 200px;
+}
+
+#user-section {
+    display: grid;
+    justify-items: center;
+    background-color: rgb(183, 189, 189);
+    width: 200px;
+    padding-top: 30px;
+    font-size: 3em;
+    border-radius: 15%;
+}
+
+#goblin-list li {
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+    height: 150px;
+    width: 30%;
+    background-color: rgb(216, 216, 216);
+    padding: 10px;
+    margin: 10px;
+    justify-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 10%;
+    border: 1px solid rgb(244, 244, 244);
+    font-size: 1.5em;
+}
+
+#goblin-list img {
+    height: 75px;
+}
+
+footer {
+    color: grey;
+    text-align: right;
+    font-size: 0.9em;
+}
+
+button {
+    font-size: 1.2em;
+    border-radius: 10%;
+}
