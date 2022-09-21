@@ -11,17 +11,17 @@ const userHPDisplay = document.getElementById('user-hp');
 const addGoblinForm = document.getElementById('add-goblin-form');
 
 /* State */
-let message = '(message to user will go here)';
-let scoreboard = 'You have defeated 0 goblin(s).';
+let message = 'Time to fight some goblins!';
+//let scoreboard = 'You have defeated 0 goblin(s).';
 let goblins = [
     { name: 'Bronco', type: 'goblin', hp: 8 },
-    { name: 'Sal', type: 'ghoul', hp: 5 },
-    { name: 'Birdy', type: 'ogre', hp: 10 },
+    { name: 'Sal', type: 'ghoul', hp: 6 },
 ];
 let user = {
     type: 'hero',
     hp: 10,
 };
+let defeated = 0;
 
 /* Probability array */
 const goblinAttacks = [0, 1, 1, 2, 2, 2, 3];
@@ -37,10 +37,13 @@ addGoblinForm.addEventListener('submit', (e) => {
     const goblin = {
         name: formData.get('name'),
         type: goblinType,
-        hp: 22,
+        hp: 10,
     };
     goblins.push(goblin);
+
+    message = `${goblin.name} has joined the battle.`;
     displayGoblins();
+    displayMessage();
 });
 // remove dead goblins
 
@@ -50,12 +53,13 @@ function displayMessage() {
 }
 
 function displayScoreboard() {
-    scoreboardSection.textContent = scoreboard;
+    scoreboardSection.textContent = `You have defeated ${defeated} goblins.`;
 }
 
 function displayUser() {
     if (user.hp === 0) {
         userImage.src = 'assets/deaduser.png';
+        message = `Bummer, you're dead. `;
     }
     userHPDisplay.textContent = user.hp;
 }
@@ -81,13 +85,31 @@ function displayGoblins() {
             const userAttackDamage = getRandomItem(userAttacks);
             const goblinAttackDamage = getRandomItem(goblinAttacks);
             // update goblin hp
-            goblin.hp = goblin.hp - userAttackDamage;
+            goblin.hp = Math.max(0, goblin.hp - userAttackDamage);
             // update user hp
-            user.hp = user.hp - goblinAttackDamage;
+            user.hp = Math.max(0, user.hp - goblinAttackDamage);
             // update message
-            message = `${goblin.name} hit you and did ${goblinAttackDamage} in damage. You hit ${goblin.name} and did ${userAttackDamage} in damage.`;
+
+            message = '';
+            if (userAttackDamage === 0) {
+                message += 'You missed. ';
+            } else {
+                message += `You hit ${goblin.name} and did ${userAttackDamage} in damage. `;
+            }
+
+            if (goblinAttackDamage === 0) {
+                message += `${goblin.name} missed you. `;
+            } else {
+                message += `${goblin.name} hit you and did ${goblinAttackDamage} in damage. `;
+            }
             // update scoreboard
+
             // update displays
+            if (goblin.hp < 1) {
+                defeated++;
+                displayScoreboard();
+            }
+
             displayUser();
             displayGoblins();
             displayMessage();
