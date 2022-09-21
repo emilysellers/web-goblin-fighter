@@ -45,6 +45,8 @@ addGoblinForm.addEventListener('submit', (e) => {
     message = `${goblin.name} has joined the battle.`;
     displayGoblins();
     displayMessage();
+
+    addGoblinForm.reset();
 });
 // remove dead goblins
 removeDeadButton.addEventListener('click', () => {
